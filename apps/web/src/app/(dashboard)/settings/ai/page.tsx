@@ -158,7 +158,7 @@ export default function AISettingsPage() {
             Test Connection
           </Button>
           {testResult && (
-            <span className={`flex items-center gap-1 text-sm ${testResult === "success" ? "text-green-600" : "text-red-600"}`}>
+            <span className={`flex items-center gap-1 text-sm ${testResult === "success" ? "text-neutral-700" : "text-neutral-900"}`}>
               {testResult === "success" ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
               {testMessage}
             </span>

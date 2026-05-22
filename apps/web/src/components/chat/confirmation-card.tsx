@@ -33,19 +33,19 @@ export function ConfirmationCard({
   const label = TOOL_LABELS[toolName] || toolName;
 
   return (
-    <Card className="max-w-sm border-amber-200 bg-amber-50/50 dark:border-amber-900 dark:bg-amber-950/20">
+    <Card className="max-w-sm border border-border bg-background">
       <CardHeader className="pb-2 pt-4 px-4">
         <CardTitle className="text-sm flex items-center gap-2">
           <Badge variant="outline" className="text-xs">
             {label}
           </Badge>
           {resolved === "approved" && (
-            <Badge className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
+            <Badge variant="secondary">
               Approved
             </Badge>
           )}
           {resolved === "rejected" && (
-            <Badge variant="secondary" className="bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300">
+            <Badge variant="destructive">
               Rejected
             </Badge>
           )}

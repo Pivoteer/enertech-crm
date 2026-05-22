@@ -583,8 +583,8 @@ When creating or updating records, use these value formats:
             </pre>
           </div>
 
-          <div className="rounded-md border border-blue-500/20 bg-blue-500/5 p-3 text-sm space-y-2">
-            <p className="font-medium text-blue-600 dark:text-blue-400">
+          <div className="rounded-md border border-neutral-300/50 bg-neutral-50 p-3 text-sm space-y-2">
+            <p className="font-medium text-neutral-700 dark:text-neutral-400">
               Quick start:
             </p>
             <ol className="list-decimal pl-5 space-y-1 text-muted-foreground text-xs">

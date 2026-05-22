@@ -52,9 +52,9 @@ const GROUP_LABELS: Record<DateGroup, string> = {
 const GROUP_ORDER: DateGroup[] = ["today", "yesterday", "this_week", "older"];
 
 const OBJECT_COLORS: Record<string, string> = {
-  companies: "bg-blue-500",
-  people: "bg-purple-500",
-  deals: "bg-orange-500",
+  companies: "bg-foreground",
+  people: "bg-muted-foreground",
+  deals: "bg-foreground",
 };
 
 function getContentPreview(content: unknown): string {

@@ -29,9 +29,9 @@ interface ChooseRecordDialogProps {
 }
 
 const OBJECT_COLORS: Record<string, string> = {
-  companies: "bg-blue-500",
-  people: "bg-purple-500",
-  deals: "bg-orange-500",
+  companies: "bg-foreground",
+  people: "bg-muted-foreground",
+  deals: "bg-foreground",
 };
 
 function getObjectColor(slug: string): string {

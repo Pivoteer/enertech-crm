@@ -272,8 +272,8 @@ export default function ApiKeysPage() {
                 )}
               </Button>
             </div>
-            <div className="flex items-start gap-2 rounded-md border border-yellow-500/30 bg-yellow-500/10 p-3 text-sm">
-              <AlertTriangle className="h-4 w-4 mt-0.5 shrink-0 text-yellow-600" />
+            <div className="flex items-start gap-2 rounded-md border border-neutral-300/50 bg-neutral-100 p-3 text-sm">
+              <AlertTriangle className="h-4 w-4 mt-0.5 shrink-0 text-neutral-600" />
               <span>
                 Store this key securely. It will not be shown again. Use it as a
                 Bearer token: <code className="text-xs">Authorization: Bearer {"<key>"}</code>

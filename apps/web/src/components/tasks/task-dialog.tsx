@@ -574,11 +574,11 @@ export function TaskDialog({
                       {linkedRecords.map((r) => {
                         const chipColor =
                           r.objectSlug === "companies"
-                            ? "bg-blue-500"
+                            ? "bg-foreground"
                             : r.objectSlug === "people"
-                              ? "bg-purple-500"
+                              ? "bg-muted-foreground"
                               : r.objectSlug === "deals"
-                                ? "bg-orange-500"
+                                ? "bg-foreground"
                                 : "bg-muted-foreground";
                         return (
                           <div

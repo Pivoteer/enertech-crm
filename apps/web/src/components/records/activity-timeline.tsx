@@ -54,11 +54,11 @@ export function ActivityTimeline({ activities }: ActivityTimelineProps) {
 function ActivityIcon({ type }: { type: ActivityItem["type"] }) {
   switch (type) {
     case "created":
-      return <UserPlus className="h-3 w-3 text-green-500" />;
+      return <UserPlus className="h-3 w-3 text-foreground" />;
     case "note":
-      return <StickyNote className="h-3 w-3 text-blue-500" />;
+      return <StickyNote className="h-3 w-3 text-muted-foreground" />;
     case "task":
-      return <CheckSquare className="h-3 w-3 text-purple-500" />;
+      return <CheckSquare className="h-3 w-3 text-muted-foreground" />;
     default:
       return <Clock className="h-3 w-3 text-muted-foreground" />;
   }

@@ -120,7 +120,7 @@ export default function SettingsPage() {
             Save Changes
           </Button>
           {saved && (
-            <span className="text-sm text-green-500">Saved</span>
+            <span className="text-sm text-neutral-700">Saved</span>
           )}
         </div>
       </div>
