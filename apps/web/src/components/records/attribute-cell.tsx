@@ -26,11 +26,11 @@ export function AttributeCell({ type, value, options, statuses }: AttributeCellP
         return <span>{value.filter(Boolean).join(", ")}</span>;
       }
       if (type === "email_address") {
-        return <span className="text-primary">{String(value)}</span>;
+        return <span className="text-foreground">{String(value)}</span>;
       }
       if (type === "domain") {
         return (
-          <span className="flex items-center gap-1 text-primary">
+          <span className="flex items-center gap-1 text-foreground">
             {String(value)}
             <ExternalLink className="h-3 w-3" />
           </span>
@@ -47,7 +47,7 @@ export function AttributeCell({ type, value, options, statuses }: AttributeCellP
             {Array.from({ length: 5 }, (_, i) => (
               <Star
                 key={i}
-                className={`h-3.5 w-3.5 ${i < num ? "fill-yellow-500 text-yellow-500" : "text-muted-foreground/30"}`}
+                className={`h-3.5 w-3.5 ${i < num ? "fill-foreground text-foreground" : "text-muted-foreground/30"}`}
               />
             ))}
           </span>
@@ -77,7 +77,7 @@ export function AttributeCell({ type, value, options, statuses }: AttributeCellP
 
     case "checkbox":
       return value ? (
-        <Check className="h-4 w-4 text-green-500" />
+        <Check className="h-4 w-4 text-foreground" />
       ) : (
         <X className="h-4 w-4 text-muted-foreground/40" />
       );
@@ -89,7 +89,7 @@ export function AttributeCell({ type, value, options, statuses }: AttributeCellP
             {value.map((v, i) => {
               const opt = options?.find((o) => o.id === v);
               return (
-                <Badge key={i} variant="secondary" style={opt ? { backgroundColor: opt.color + "20", color: opt.color } : undefined}>
+                <Badge key={i} variant="secondary" >
                   {opt?.title || String(v)}
                 </Badge>
               );
@@ -99,7 +99,7 @@ export function AttributeCell({ type, value, options, statuses }: AttributeCellP
       }
       const opt = options?.find((o) => o.id === value);
       return (
-        <Badge variant="secondary" style={opt ? { backgroundColor: opt.color + "20", color: opt.color } : undefined}>
+        <Badge variant="secondary" >
           {opt?.title || String(value)}
         </Badge>
       );
@@ -108,7 +108,7 @@ export function AttributeCell({ type, value, options, statuses }: AttributeCellP
     case "status": {
       const status = statuses?.find((s) => s.id === value);
       return (
-        <Badge style={status ? { backgroundColor: status.color + "20", color: status.color, borderColor: status.color + "40" } : undefined} className="border">
+        <Badge  className="border">
           {status?.title || String(value)}
         </Badge>
       );
