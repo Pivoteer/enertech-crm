@@ -2,5 +2,6 @@
   "buildCommand": "npx turbo build --filter=@openclaw-crm/web",
   "installCommand": "pnpm install",
   "outputDirectory": "apps/web/.next",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "rootDirectory": "apps/web"
 }
