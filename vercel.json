@@ -1,6 +1,8 @@
 {
-  "buildCommand": "npx turbo build --filter=@openclaw-crm/web",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "pnpm install",
+  "buildCommand": "pnpm turbo build --filter=@openclaw-crm/web",
   "outputDirectory": ".next",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "rootDirectory": "apps/web"
 }
