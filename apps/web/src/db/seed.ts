@@ -27,8 +27,8 @@ async function seed() {
   const [workspace] = await db
     .insert(schema.workspaces)
     .values({
-      name: "My Workspace",
-      slug: "my-workspace",
+      name: "Enertech CRM",
+      slug: "enertech",
       settings: {},
     })
     .returning();
@@ -71,9 +71,9 @@ async function seed() {
 
       console.log(`  Created attribute: ${attribute.title} (${attribute.type})`);
 
-      if (stdObj.slug === "deals" && attr.slug === "stage") {
+if (stdObj.slug === "deals" && attr.slug === "stage") {
         for (const stage of DEAL_STAGES) {
-          await db.insert(schema.statuses).values({
+          await db.insert(statuses).values({
             attributeId: attribute.id,
             title: stage.title,
             color: stage.color,
@@ -83,6 +83,123 @@ async function seed() {
           });
         }
         console.log(`  Created ${DEAL_STAGES.length} deal stages`);
+      }
+
+      // Site stage statuses
+      if (stdObj.slug === "sites" && attr.slug === "stage") {
+        const SITE_STAGES = [
+          { title: "New Lead", color: "#6366f1", sortOrder: 0, isActive: true },
+          { title: "Site Walk", color: "#8b5cf6", sortOrder: 1, isActive: true },
+          { title: "Proposal", color: "#a855f7", sortOrder: 2, isActive: true },
+          { title: "Contract Sent", color: "#d946ef", sortOrder: 3, isActive: true },
+          { title: "Won", color: "#22c55e", sortOrder: 4, isActive: false },
+          { title: "Lost", color: "#ef4444", sortOrder: 5, isActive: false },
+        ];
+        for (const s of SITE_STAGES) {
+          await db.insert(statuses).values({
+            attributeId: attribute.id,
+            title: s.title,
+            color: s.color,
+            sortOrder: s.sortOrder,
+            isActive: s.isActive,
+            celebrationEnabled: s.title === "Won",
+          });
+        }
+        console.log(`  Created ${SITE_STAGES.length} site stages`);
+      }
+
+      // Charger status
+      if (stdObj.slug === "chargers" && attr.slug === "status") {
+        const CHARGER_STATUSES = [
+          { title: "Active", color: "#22c55e", sortOrder: 0, isActive: true },
+          { title: "Inactive", color: "#ef4444", sortOrder: 1, isActive: false },
+          { title: "Maintenance", color: "#f59e0b", sortOrder: 2, isActive: true },
+        ];
+        for (const s of CHARGER_STATUSES) {
+          await db.insert(statuses).values({
+            attributeId: attribute.id,
+            title: s.title,
+            color: s.color,
+            sortOrder: s.sortOrder,
+            isActive: s.isActive,
+            celebrationEnabled: false,
+          });
+        }
+        console.log(`  Created ${CHARGER_STATUSES.length} charger statuses`);
+      }
+
+      // Maintenance log status
+      if (stdObj.slug === "maintenance_logs" && attr.slug === "status") {
+        const MAINT_STATUSES = [
+          { title: "Scheduled", color: "#6366f1", sortOrder: 0, isActive: true },
+          { title: "In Progress", color: "#f59e0b", sortOrder: 1, isActive: true },
+          { title: "Completed", color: "#22c55e", sortOrder: 2, isActive: false },
+          { title: "Cancelled", color: "#ef4444", sortOrder: 3, isActive: false },
+        ];
+        for (const s of MAINT_STATUSES) {
+          await db.insert(statuses).values({
+            attributeId: attribute.id,
+            title: s.title,
+            color: s.color,
+            sortOrder: s.sortOrder,
+            isActive: s.isActive,
+            celebrationEnabled: false,
+          });
+        }
+        console.log(`  Created ${MAINT_STATUSES.length} maintenance log statuses`);
+      }
+
+      // Charger level select options
+      if (stdObj.slug === "chargers" && attr.slug === "charger_level") {
+        const LEVELS = [
+          { title: "L2", color: "#6366f1" },
+          { title: "L3 DC Fast", color: "#22c55e" },
+        ];
+        for (let i = 0; i < LEVELS.length; i++) {
+          await db.insert(schema.selectOptions).values({
+            attributeId: attribute.id,
+            title: LEVELS[i].title,
+            color: LEVELS[i].color,
+            sortOrder: i,
+          });
+        }
+        console.log(`  Created ${LEVELS.length} charger level options`);
+      }
+
+      // Site charger level select options
+      if (stdObj.slug === "sites" && attr.slug === "charger_level") {
+        const LEVELS = [
+          { title: "L2", color: "#6366f1" },
+          { title: "L3 DC Fast", color: "#22c55e" },
+        ];
+        for (let i = 0; i < LEVELS.length; i++) {
+          await db.insert(schema.selectOptions).values({
+            attributeId: attribute.id,
+            title: LEVELS[i].title,
+            color: LEVELS[i].color,
+            sortOrder: i,
+          });
+        }
+        console.log(`  Created ${LEVELS.length} site charger level options`);
+      }
+
+      // Maintenance log type options
+      if (stdObj.slug === "maintenance_logs" && attr.slug === "type") {
+        const TYPES = [
+          { title: "Preventive", color: "#6366f1" },
+          { title: "Corrective", color: "#f59e0b" },
+          { title: "Inspection", color: "#22c55e" },
+          { title: "Upgrade", color: "#a855f7" },
+        ];
+        for (let i = 0; i < TYPES.length; i++) {
+          await db.insert(schema.selectOptions).values({
+            attributeId: attribute.id,
+            title: TYPES[i].title,
+            color: TYPES[i].color,
+            sortOrder: i,
+          });
+        }
+        console.log(`  Created ${TYPES.length} maintenance type options`);
       }
     }
   }
