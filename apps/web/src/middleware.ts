@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const publicPaths = ["/login", "/register", "/api/auth", "/docs", "/blog", "/compare"];
+const publicPaths = ["/login", "/register", "/api/auth", "/api/admin/debug", "/docs", "/blog", "/compare"];
 const workspaceSetupPaths = ["/select-workspace", "/api/v1/workspaces"];
 
 export function middleware(req: NextRequest) {
